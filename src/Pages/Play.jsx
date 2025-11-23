@@ -3,7 +3,8 @@ import { useLocation, useParams } from "react-router-dom";
 import Nabvbar from "../Components/Nabvbar";
 import { FaPlay, FaPause ,FaBars } from "react-icons/fa";
 import Sidebar from "../Components/Sidebar";
-
+import { MdSkipNext } from "react-icons/md";
+import { MdSkipPrevious } from "react-icons/md";
 export default function Play() {
 
 
@@ -209,7 +210,7 @@ const [currentTime, setCurrentTime] = useState(0);
   return (
     <>
       <Nabvbar />
-     <div className="flex">
+     <div className="flex overflow-y-hidden">
   {/* Sidebar */}
  <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
   
@@ -230,15 +231,14 @@ const [currentTime, setCurrentTime] = useState(0);
 
     {/* Player container */}
     <div className="absolute top-18 right-0 w-full sm:w-[calc(100%-18rem)] p-4 flex flex-col items-center pt-30">
-      <div className="relative w-full max-w-md sm:max-w-lg bg-gray-800 rounded-3xl shadow-xl flex flex-col items-center justify-center p-4 h-50">
-        {/* <canvas ref={canvasRef} className="absolute inset-0  rounded-3xl " /> */}
+      <div className="relative w-full max-w-md sm:max-w-lg bg-gray-800 rounded-3xl shadow-2xl flex flex-col items-center justify-center p-4 h-50">
         <div className="absolute flex flex-col items-center justify-center gap-4 z-10">
           <div className="w-40 h-40 rounded-full overflow-hidden shadow-2xl">
             <img src={songs[setid].image} alt={songs[setid].name} className="w-full h-full object-cover" />
           </div>
           <button
             onClick={togglePlay}
-            className="bg-red-500 hover:bg-purple-600 p-4 rounded-full shadow-lg text-white text-2xl flex items-center justify-center"
+            className="bg-red-500 hover:bg-black p-4 rounded-full shadow-lg text-white text-2xl flex items-center justify-center"
           >
             {playing ? <FaPause /> : <FaPlay />}
           </button>
@@ -264,9 +264,11 @@ const [currentTime, setCurrentTime] = useState(0);
   }}
    className="w-full h-1 accent-red-500 rounded-lg cursor-pointer"
 />
-<button onClick={handleNext}>Next</button> <button onClick={handleprev}>Previous</button>
-        <div className="flex items-center justify-between w-full">
-          <a href={songs[setid].url} download className="bg-gray-500 text-white px-4 py-2 rounded">
+<button className="hover:bg-black relative left-30 text-3xl bottom-49 text-white bg-red-500 p-2 rounded-full" onClick={handleNext}><MdSkipNext /></button> 
+
+<button className="hover:bg-black relative right-30 bottom-64 text-3xl text-white bg-red-500 p-2 rounded-full" onClick={handleprev}><MdSkipPrevious /></button>
+        <div className="flex items-center justify-between w-full relative bottom-30">
+          <a href={songs[setid].url} download className="bg-black text-white px-4 py-2 rounded">
             Download
           </a>
           <div className="flex items-center gap-2">
@@ -274,7 +276,7 @@ const [currentTime, setCurrentTime] = useState(0);
             <select
               value={speed}
               onChange={handleSpeedChange}
-              className="bg-gray-800 text-white px-2 py-1 rounded"
+              className="bg-black text-white px-2 py-1 rounded"
             >
               <option value="0.5">0.5x</option>
               <option value="1">1x</option>
