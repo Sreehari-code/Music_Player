@@ -37,7 +37,7 @@ export default function Nabvbar({ interval = 5000 }) {
     <nav className=" bg-black  flex flex-wrap  justify-between  items-center  px-4 py-3  gap-4  fixed  top-0 w-full z-50 ">
 
       {/* Left Side Content  */}
-      <div className="flex flex-wrap items-center gap-4 flex-1 sm:flex-none">
+      <div className="flex flex-wrap items-center gap-4 flex-1 sm:flex-none   pl-10">
         <img src={logo} alt="logo" className="w-12 h-12 hover:cursor-pointer " onClick={() => navigate('/')} />
         <h1 className='text-white italic text-3xl flex items-end '><span className='text-red-600'>ME</span>LO <span className='text-xs hidden sm:block '>Enjoy Every Beat ..</span></h1>
       </div>
