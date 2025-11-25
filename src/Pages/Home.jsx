@@ -256,7 +256,7 @@ const [sidebarOpen, setSidebarOpen] = useState(false);
 
 
 <button
-  className="sm:hidden absolute top-4 left-4 text-white text-2xl z-50"
+  className="sm:hidden absolute top-4 left-4 text-white text-2xl z-50 fixed"
   onClick={() => setSidebarOpen(true)}
 >
   <FaBars />
